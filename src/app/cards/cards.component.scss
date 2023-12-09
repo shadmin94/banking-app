@@ -1,0 +1,433 @@
+#main-content {
+  background: #0c365a;
+  color: #f8f8f8;
+  position: fixed;
+  top: 2.4rem;
+  width: 100%;
+}
+
+.grid-container {
+  padding-right: 1rem;
+  padding-left: 1rem;
+
+  p {
+    font-size: 0.7rem;
+    margin-bottom: 0;
+  }
+
+  .acc-bal {
+    margin: 0.3rem 0;
+  }
+  .dollar-icon {
+    padding: 0.1rem 0.6rem;
+    background-color: #01d167;
+    border-radius: 0.2rem;
+    font-size: 0.6rem;
+    margin-right: 0.6rem;
+  }
+  label {
+    display: inline-block;
+    color: #f8f8f8;
+    font-weight: 500;
+  }
+  button {
+    color: #23cefd;
+    padding: 0;
+    margin: 0;
+    font-size: 0.7rem;
+
+    .ng-fa-icon {
+      margin-right: 0.4rem;
+    }
+  }
+}
+.main-container {
+  margin-left: 0;
+  margin-right: 0;
+  background: #0c365a;
+
+  .tabs {
+    border: 0;
+    background: unset;
+    color: #7e94a8;
+    margin: 0.2rem 0.6rem;
+
+    .tabs-title > a {
+      position: relative;
+      padding: 0.4rem 0;
+      margin: 0 0.4rem;
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: #7e94a8;
+
+      &:hover {
+        color: #f8f8f8;
+        text-decoration: none;
+      }
+
+      &:focus,
+      &[aria-selected="true"],
+      &[aria-selected="true"]:hover {
+        box-shadow: inset 0 -1.2px 0 0 #23cefd;
+        background: unset;
+        color: #f8f8f8;
+        font-weight: 700;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .tabs-content {
+    background: inherit;
+    border: 0;
+
+    #panel2 {
+      height: 16rem;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+  }
+}
+
+//card
+.user-card {
+  width: 96%;
+  padding: 20px;
+  margin-left: 0;
+  box-sizing: border-box;
+  background-color: #01d167;
+  color: #f8f8f8;
+  border-radius: 10px;
+  position: relative;
+}
+
+/* Styling for the card number */
+.card-number {
+  margin-bottom: 0.5rem;
+  margin-left: 0.4rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.2rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.card-number-mask {
+  background-image: url(./../../assets/dot.png);
+  display: inline-block;
+  height: 0.5rem;
+  width: 8.5rem;
+}
+
+/* Styling for the card holder's name */
+.card-holder {
+  margin-bottom: 0.4rem;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Styling for the card expiration date and CVV */
+.card-expiration-cvv {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  font-weight: 500;
+  width: 90%;
+  margin-bottom: 1rem;
+
+  .exp-date {
+    letter-spacing: 1.5px;
+  }
+}
+
+/* Styling for the expiration date and CVV input fields */
+.card-expiration,
+.card-cvv {
+  width: 48%;
+}
+
+/* Styling for the card logo */
+.card-logo {
+  height: 1rem;
+  width: 4rem;
+  position: absolute;
+  right: 1rem;
+}
+
+/* Styling for the card brand logo */
+.brand-logo {
+  max-width: 50px;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.show-number {
+  background-color: #ffffff;
+  color: #01d167;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 0.3rem 0.5rem 0.6rem 0.5rem;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: -0.5rem;
+  margin-left: 8.7rem;
+}
+//end card
+.panel1 {
+  position: relative;
+}
+
+.orbit-container {
+  position: unset;
+}
+
+.orbit-previous,
+.orbit-next {
+  height: 10.3rem;
+  width: 0.8rem;
+  background-color: #3052ad;
+  padding: 0;
+  z-index: 0;
+}
+
+.orbit-previous {
+  border-radius: 0 10px 10px 0;
+  left: -15px;
+}
+.orbit-next {
+  border-radius: 10px 0 0 10px;
+  right: -15px;
+}
+
+.orbit-bullets {
+  margin: 0;
+  margin-bottom: 1rem;
+  margin-top: -0.2rem;
+  button {
+    width: 0.4rem;
+    height: 0.4rem;
+    margin: 0.2rem;
+    border-radius: 50%;
+    background-color: #0b455c;
+  }
+  button.is-active {
+    background-color: #01d167;
+    width: 0.8rem;
+    border-radius: 3px;
+  }
+}
+
+/* card-info */
+.card-info {
+  background-color: #edf3ff;
+  height: 20rem;
+  border-radius: 20px 20px 0 0;
+  margin-top: -1rem;
+}
+
+.bottom-sheet {
+  background-color: #ffffff;
+  border-radius: 20px 20px 0 0;
+  margin-top: -1rem;
+  color: black;
+  position: absolute;
+  top: 23.5rem;
+
+  .card-actions {
+    padding: 0.8rem 0.5rem;
+    background-color: #edf3ff;
+    border-radius: 20px 20px 0 0;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    li {
+      color: #3e617f;
+      list-style: none;
+      margin: 0;
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .ng-fa-icon img {
+      height: 1.7rem;
+    }
+    .action-title {
+      margin-top: 0.5rem;
+      text-align: center;
+      display: block;
+    }
+  }
+}
+
+.bottom-sheet-content {
+  margin-bottom: 1.6rem;
+}
+
+/*accordion start*/
+.accordion {
+  padding: 1rem;
+
+  .accordion-item {
+    margin-bottom: 1rem;
+
+    .accordion-title {
+      border: 1px solid #f3f3f3;
+      box-shadow: 0 0 7px 2px #f3f3f3;
+      background-color: #fafcff;
+      border-radius: 5px;
+      color: #143d60;
+      font-size: 0.7rem;
+      font-weight: bold;
+      z-index: 2;
+
+      &:focus,
+      &:hover {
+        background-color: #fafcff;
+      }
+
+      &:before {
+        //content: '\276F';
+        height: 1.1rem;
+        content: "❯";
+        transform: rotate(90deg);
+        padding: 0.25rem 0.4rem;
+        background: #d8e1f3;
+        color: white;
+        border-radius: 50%;
+        font-size: 0.6rem;
+      }
+
+      img {
+        height: 1.2rem;
+        margin-right: 0.6rem;
+      }
+    }
+
+    .accordion-content {
+      border: 2px solid #f3f3f3;
+      border-top: 0;
+      margin-top: -0.4rem;
+      border-radius: 0 0 9px 9px;
+      position: relative;
+      z-index: 1;
+
+      .transaction-list {
+        list-style: none;
+        margin: 0;
+
+        li {
+          padding: 0.8rem 0;
+          border-top: 1px solid #f6f6f6;
+          display: flex;
+
+          &:first-of-type {
+            border-top: 0;
+          }
+
+          img {
+            height: 2.3rem;
+          }
+
+          .transaction-info {
+            margin-left: 0.6rem;
+            font-size: 0.7rem;
+            font-weight: bold;
+            .purpose {
+              margin-bottom: 0;
+            }
+            .date {
+              color: #c1c1c1;
+              font-weight: normal;
+            }
+            .type {
+              font-size: 0.65rem;
+              color: #3159ab;
+              padding-top: 0.45rem;
+              .credit-icon {
+                padding: 0.2rem 0.35rem;
+                color: #ffffff;
+                background-color: #3159ab;
+                border-radius: 45%;
+                font-size: 0.45rem;
+                margin-right: 0.3rem;
+                margin-top: 0.5rem;
+              }
+            }
+          }
+
+          .amount {
+            font-size: 0.75rem;
+            font-weight: bold;
+
+            &:after {
+              content: "❯";
+              color: #ece9e9;
+              font-weight: normal;
+              margin-left: 0.4rem;
+            }
+            &.credit {
+              color: #01d167;
+            }
+          }
+        }
+      }
+    }
+
+    .view-transactions {
+      background-color: #edfff5;
+      color: #01d167;
+      border: 2px solid #dfffed;
+      border-radius: 0 0 9px 9px;
+      width: 100%;
+      margin-top: -0.3rem;
+      font-size: 0.65rem;
+      font-weight: bold;
+      padding: 1.2rem 0 0.8rem 0;
+    }
+  }
+}
+
+.is-active > .accordion-title::before {
+  content: "❮" !important;
+}
+/*accordion end*/
+
+/*modal starts */
+.reveal-modal {
+  background-color: #ffffff;
+  padding: 1rem;
+  position: relative;
+  margin: 1rem;
+  border-radius: 5px;
+
+  label{
+    font-size: .8rem;
+    color: #716c6c;
+  }
+  .error {
+    color: red;
+    display: block;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+  }
+  .button.primary{
+    padding: 0.5rem;
+    border-radius: 3px;
+    margin-bottom: 0;
+    background-color: #4357c4;
+  }
+  .close-reveal-modal {
+    position: absolute;
+    right: 0.5rem;
+    top: 0;
+    font-size: 1.5rem;
+    color:#716c6c;
+  }
+}
+/*modal ends */

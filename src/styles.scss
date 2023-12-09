@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Noto Sans";
+  src: url("./fonts/Noto_Sans/NotoSans-Regular.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: "Noto Sans";
+    src: url("./fonts/Noto_Sans/NotoSans-Medium.ttf") format("truetype");
+    font-weight: 500
+  }
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("./fonts/Noto_Sans/NotoSans-Bold.ttf") format("truetype");
+  font-weight: 700
+}
+
+body {
+    font-family: "Noto Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    font-weight: normal;
+  }

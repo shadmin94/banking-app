@@ -1,0 +1,208 @@
+<div class="fluid" id="main-content">
+  <div class="page-header grid-container margin-top-3 margin-bottom-3">
+    <div class="grid-x">
+      <div class="cell small-12">
+        <p class="margin-bottom-1">Account balance</p>
+      </div>
+      <div class="cell small-6 acc-bal">
+        <span class="dollar-icon">S$</span>
+        <label>3,000</label>
+      </div>
+      <div class="cell small-6 text-right">
+        <button class="button clear" (click)="opencardmodal();">
+          <fa-icon [icon]="faCirclePlus"></fa-icon>New card
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div>
+      <ul class="tabs" data-tabs id="cards-all">
+        <li class="tabs-title is-active">
+          <a href="#panel1" aria-selected="true">My debit cards</a>
+        </li>
+        <li class="tabs-title">
+          <a data-tabs-target="panel2" href="#panel2">All company cards</a>
+        </li>
+      </ul>
+      <div class="tabs-content" data-tabs-content="cards-all">
+        <div class="tabs-panel is-active" id="panel1">
+          <div
+            class="orbit"
+            role="region"
+            aria-label="My Debit cards"
+            data-orbit
+            data-use-m-u-i="false"
+          >
+            <ul class="orbit-container">
+              <!-- <button class="orbit-previous">
+                <span class="show-for-sr">Previous Card</span>
+              </button> -->
+              <button class="orbit-next">
+                <span class="show-for-sr">Next Card</span>
+              </button>
+              <li class="orbit-slide is-active" *ngFor="let card of cardarray; index as i">
+                <button class="button show-number">
+                  <fa-icon [icon]="faEye"></fa-icon> Show card number
+                </button>
+                <div class="user-card">
+                  <img
+                    src="../../assets/aspire_big_logo_white.png"
+                    alt="Card Logo"
+                    class="card-logo text-right"
+                  />
+                  <div class="card-holder">{{ card.cardholder }}</div>
+                  <div class="card-number-mask"></div>
+                  <div class="card-number">{{ card.cardnumber | slice : 15 : 19 }}</div>
+                  <div class="card-expiration-cvv">
+                    <div class="card-expiration">
+                      Thru: <span class="exp-date">{{ card.expdate }}</span>
+                    </div>
+                    <div class="card-cvv">
+                      CVV: <fa-icon [icon]="faAsterisk"></fa-icon>&nbsp;<fa-icon
+                        [icon]="faAsterisk"
+                      ></fa-icon
+                      >&nbsp;<fa-icon [icon]="faAsterisk"></fa-icon>
+                    </div>
+                  </div>
+                  <img
+                    src="../../assets/visa_logo.png"
+                    alt="Brand Logo"
+                    class="brand-logo"
+                  />
+                </div>
+              </li>
+            </ul>
+
+            <nav class="orbit-bullets">
+              <button [attr.data-slide]="i" *ngFor="let card of cardarray; index as i">
+                <span class="show-for-sr">Slide details.</span>
+              </button>
+            </nav>
+          </div>
+        </div>
+
+        <div class="tabs-panel" id="panel2">
+          <p>All company cards</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-sheet">
+  <div class="bottom-sheet-content">
+    <div class="card-actions">
+      <ul class="flex-container">
+        <li id="freeze">
+          <span class="ng-fa-icon"
+            ><img src="./../../assets/freeze.png"
+          /></span>
+          <span class="action-title">Freeze card</span>
+        </li>
+        <li class="selected" id="spend-limit">
+          <span class="ng-fa-icon"
+            ><img src="./../../assets/spend_limit.png"
+          /></span>
+          <span class="action-title">Set spend limit</span>
+        </li>
+        <li id="gpay">
+          <span class="ng-fa-icon"><img src="./../../assets/gpay.png" /></span>
+          <span class="action-title">Add to GPay</span>
+        </li>
+        <li id="replace">
+          <span class="ng-fa-icon"
+            ><img src="./../../assets/replace.png"
+          /></span>
+          <span class="action-title">Replace card</span>
+        </li>
+        <li id="cancel">
+          <span class="ng-fa-icon"
+            ><img src="./../../assets/delete.png"
+          /></span>
+          <span class="action-title">Cancel Card</span>
+        </li>
+      </ul>
+    </div>
+
+    <ul
+      class="accordion"
+      data-accordion
+      data-multi-expand="true"
+      data-allow-all-closed="true"
+    >
+      <li class="accordion-item" data-accordion-item>
+        <a href="#" class="accordion-title"
+          ><img src="./../../assets/carddetails.png" /> Card details</a
+        >
+        <div class="accordion-content" data-tab-content>
+          <p>Panel 1. Card details here</p>
+        </div>
+      </li>
+      <li class="accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"
+          ><img src="./../../assets/transactions.png" />Recent transactions</a
+        >
+        <div class="accordion-content" data-tab-content>
+          <ul class="transaction-list">
+            <li>
+              <img src="./../../assets/bin.png" />
+              <div class="transaction-info">
+                <p class="purpose">Hamleys</p>
+                <span class="date">20 May 2020</span>
+                <div class="type"><span class="credit-icon"><fa-icon [icon]="faCreditCard"></fa-icon></span>
+                   Refund on debit card</div>
+              </div>
+              <div class="amount credit">+ S$ 150</div>
+            </li>
+            <li>
+              <img src="./../../assets/airplane.png" />
+              <div class="transaction-info">
+                <p class="purpose">Hamleys</p>
+                <span class="date">20 May 2020</span>
+                <div class="type"><span class="credit-icon"><fa-icon [icon]="faCreditCard"></fa-icon></span>
+                   Charged to debit card</div>
+              </div>
+              <div class="amount debit">- S$ 150</div>
+            </li>
+            <li>
+              <img src="./../../assets/loudspeaker.png" />
+              <div class="transaction-info">
+                <p class="purpose">Hamleys</p>
+                <span class="date">20 May 2020</span>
+                <div class="type"><span class="credit-icon"><fa-icon [icon]="faCreditCard"></fa-icon></span>
+                   Charged to debit card</div>
+              </div>
+              <div class="amount debit">- S$ 150</div>
+            </li>
+            <li>
+              <img src="./../../assets/bin.png" />
+              <div class="transaction-info">
+                <p class="purpose">Hamleys</p>
+                <span class="date">20 May 2020</span>
+                <div class="type"><span class="credit-icon"><fa-icon [icon]="faCreditCard"></fa-icon></span>
+                   Charged to debit card</div>
+              </div>
+              <div class="amount debit">- S$ 150</div>
+            </li>
+          </ul>
+        </div>
+        <button class="button view-transactions">View all card transactions</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">Add new card</h2>
+  <form #addcardform="ngForm">
+    <label>Card Holder Name <span style="color:red">*</span>
+      <input type="text" name="name" [(ngModel)]="cardholdername" required #name="ngModel" />
+    </label>
+    <small *ngIf="name.invalid && (name.dirty || name.touched)" class="error">This field is required.</small>
+    <button class="button primary" type="submit" [disabled]="addcardform.invalid" (click)="addcard()">Submit</button>
+  </form> 
+  <a class="close-reveal-modal" aria-label="Close" data-close>&#215;</a>
+</div>
+

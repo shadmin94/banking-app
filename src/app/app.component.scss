@@ -1,0 +1,70 @@
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 13px;
+}
+body::-webkit-scrollbar {
+  width: 50px;
+}
+.off-canvas-content {
+  position: relative;
+}
+.title-bar {
+  padding: 0;
+  padding-right: 0.5rem;
+  background: #0c365a;
+  position: fixed;
+  width: 100%;
+  top: 0;
+
+  img {
+    height: 22px;
+    margin-right: 0.8rem;
+    margin-top: 1rem;
+  }
+}
+
+.mobile-footer-nav {
+  position: fixed;
+  bottom: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 9;
+  font-size: 0.5rem;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #fefefe;
+    border-top: 1px solid #e6e6e6;
+    box-shadow: 0px -2px 5px #e6e6e6;
+  }
+
+  li {
+    color: #dddddd;
+    padding: 0.5rem;
+    padding-bottom: 0.7rem;
+    list-style: none;
+    margin: 0;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    line-height: 0;
+  }
+
+  li.selected {
+    color: #01d167;
+    font-weight: 800;
+  }
+  .ng-fa-icon {
+    font-size: large;
+  }
+
+  .footer-nav-title {
+    margin-top: 0.5rem;
+    text-align: center;
+    display: block;
+  }
+}
