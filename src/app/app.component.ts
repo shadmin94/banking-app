@@ -59,9 +59,8 @@ export class AppComponent {
     else if (path === 'payments') this.paymentsSelected = true;
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     $(document).foundation();
-    console.log(this.location.path());
     this.el.nativeElement
       .querySelector(`#${this.location.path().substring(1)}`)
       .classList.add('selected');
