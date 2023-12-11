@@ -1,7 +1,8 @@
 # BankingApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
-Node version required is v18.10.0
+
+Vercel hosted link : `https://banking-app-shadmins-projects.vercel.app/`
 
 ## Run the app with http-server
 
@@ -11,6 +12,7 @@ In the browser, navigate to `http://127.0.0.1:8080`
 
 ## Run the app with Development server
 
+Node version required is v18.10.0
 In the root folder run `npm install` to install the dependencies.
 Then run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
