@@ -9,16 +9,10 @@ Install http-server globally `npm install http-server -g`
 Navigate to the banking-folder and run `http-server dist/banking app`
 In the browser, navigate to `http://127.0.0.1:8080`
 
-## Development server
+## Run the app with Development server
 
 In the root folder run `npm install` to install the dependencies.
 Then run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-Please note: The build might generate following error while serving.
-
-`Error: node_modules/foundation-sites/dist/js/foundation.d.ts:371:5 - error TS7010: 'constructor', which lacks return-type annotation, implicitly has an 'any' return type. constructor(element: any, options: any); `
-
-If while running `ng serve` you encounter the same error please navigate to the path node_modules/foundation-sites/dist/js/foundation.d.ts and replace `constructor(element: any, options: any);` with `constructor(element: any, options: any):any;`
 
 ## Code scaffolding
 
