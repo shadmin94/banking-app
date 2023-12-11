@@ -1,19 +1,26 @@
 <div class="off-canvas-content" data-off-canvas-content>
-  <div class="title-bar hide-for-large floating-mobile-header">
+  <div class="title-bar floating-mobile-header">
     <div class="title-bar-right">
-        <img src="./../assets/aspire_logo_green.svg" alt="Aspire Logo" />   
-  </div>
+      <img src="./../assets/aspire_logo_green.svg" alt="Aspire Logo" />
+    </div>
   </div>
 
-
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
 <nav class="mobile-footer-nav">
   <ul class="flex-container">
     <li class="flex-child-grow" id="home" (click)="navigateTo('home')">
       <span class="ng-fa-icon">
-        <img *ngIf="!homeSelected" src="./../assets/aspire_logo_grey.svg" alt="aspire logo"/>
-        <img *ngIf="homeSelected" src="./../assets/aspire_logo_green.svg" alt="aspire logo"/>
+        <img
+          *ngIf="!homeSelected"
+          src="./../assets/aspire_logo_grey.svg"
+          alt="aspire logo"
+        />
+        <img
+          *ngIf="homeSelected"
+          src="./../assets/aspire_logo_green.svg"
+          alt="aspire logo"
+        />
       </span>
       <span class="footer-nav-title">Home</span>
     </li>
@@ -23,8 +30,16 @@
     </li>
     <li class="flex-child-grow" id="payments" (click)="navigateTo('payments')">
       <span class="ng-fa-icon">
-        <img *ngIf="!paymentsSelected" src="./../assets/paymentsgrey.svg" alt="aspire logo"/>
-        <img *ngIf="paymentsSelected" src="./../assets/paymentsgreen.svg" alt="aspire logo"/>
+        <img
+          *ngIf="!paymentsSelected"
+          src="./../assets/paymentsgrey.svg"
+          alt="aspire logo"
+        />
+        <img
+          *ngIf="paymentsSelected"
+          src="./../assets/paymentsgreen.svg"
+          alt="aspire logo"
+        />
       </span>
       <span class="footer-nav-title">Payments</span>
     </li>

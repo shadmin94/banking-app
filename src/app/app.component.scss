@@ -3,15 +3,13 @@ html {
   box-sizing: border-box;
   font-size: 13px;
 }
-body::-webkit-scrollbar {
-  width: 50px;
+
+body ::-webkit-scrollbar {
+  width: 0;
 }
-.off-canvas-content {
-  position: relative;
-}
+
 .title-bar {
-  padding: 0;
-  padding-right: 0.5rem;
+  padding: 0 0.5rem 0.5rem 0;
   background: #0c365a;
   position: fixed;
   width: 100%;

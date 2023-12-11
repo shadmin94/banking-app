@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import {Location} from "@angular/common";
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import {
   faCreditCard,
@@ -20,25 +20,29 @@ export class AppComponent {
   homeSelected = false;
   paymentsSelected = false;
 
-  constructor(private router: Router, private el: ElementRef, private location: Location) {
+  constructor(
+    private router: Router,
+    private el: ElementRef,
+    private location: Location
+  ) {
     const cardarray = [
       {
-        'cardholder': 'Mark Henry',
-        'cardnumber': '1234 5678 9012 2020',
-        'expdate': 'Thu 12/20',
-        'cvv': '123',
-        'frozen': false
+        cardholder: 'Mark Henry',
+        cardnumber: '1234 5678 9012 2020',
+        expdate: '12/20',
+        cvv: '123',
+        frozen: false,
       },
       {
-        'cardholder': 'Anne Marie',
-        'cardnumber': '1234 5678 9012 3456',
-        'expdate': 'Fri 12/23',
-        'cvv': '456',
-        'frozen': false
-      }
+        cardholder: 'Anne Marie',
+        cardnumber: '1234 5678 9012 3456',
+        expdate: '12/23',
+        cvv: '456',
+        frozen: false,
+      },
     ];
 
-    localStorage.setItem('debitcards',JSON.stringify(cardarray));
+    localStorage.setItem('debitcards', JSON.stringify(cardarray));
   }
 
   navigateTo(path: string): void {
@@ -51,17 +55,17 @@ export class AppComponent {
     this.el.nativeElement.querySelector(`#${path}`).classList.add('selected');
     this.homeSelected = false;
     this.paymentsSelected = false;
-    if(path === 'home') this.homeSelected = true;
+    if (path === 'home') this.homeSelected = true;
     else if (path === 'payments') this.paymentsSelected = true;
-    
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     $(document).foundation();
     console.log(this.location.path());
-    this.el.nativeElement.querySelector(`#${this.location.path().substring(1)}`).classList.add('selected');
-    if(this.location.path() === '/home') this.homeSelected = true;
+    this.el.nativeElement
+      .querySelector(`#${this.location.path().substring(1)}`)
+      .classList.add('selected');
+    if (this.location.path() === '/home') this.homeSelected = true;
     else if (this.location.path() === '/payments') this.paymentsSelected = true;
   }
-
 }

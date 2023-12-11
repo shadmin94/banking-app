@@ -1,15 +1,15 @@
 <div class="fluid" id="main-content">
-  <div class="page-header grid-container margin-top-3 margin-bottom-3">
+  <div class="grid-container">
     <div class="grid-x">
       <div class="cell small-12">
-        <p class="margin-bottom-1">Account balance</p>
+        <p>Account balance</p>
       </div>
-      <div class="cell small-6 acc-bal">
+      <div class="cell small-6">
         <span class="dollar-icon">S$</span>
         <label>3,000</label>
       </div>
       <div class="cell small-6 text-right">
-        <button class="button clear" (click)="opencardmodal();">
+        <button class="button clear" (click)="opencardmodal()">
           <fa-icon [icon]="faCirclePlus"></fa-icon>New card
         </button>
       </div>
@@ -28,63 +28,56 @@
       </ul>
       <div class="tabs-content" data-tabs-content="cards-all">
         <div class="tabs-panel is-active" id="panel1">
-          <div
-            class="orbit"
-            role="region"
-            aria-label="My Debit cards"
-            data-orbit
-            data-use-m-u-i="false"
+          <swiper-container
+            class="swiper"
+            pagination="true"
+            pagination-clickable="true"
+            style="
+              --swiper-pagination-color: #01d167;
+              --swiper-pagination-bullet-inactive-color: #3052ad;
+              --swiper-pagination-bullet-border-radius: 4px;
+            "
+            (swiperslidechange)="slideChange($event)"
           >
-            <ul class="orbit-container">
-              <!-- <button class="orbit-previous">
-                <span class="show-for-sr">Previous Card</span>
-              </button> -->
-              <button class="orbit-next">
-                <span class="show-for-sr">Next Card</span>
+            <swiper-slide *ngFor="let card of cardarray; index as i">
+              <button class="button show-number">
+                <fa-icon [icon]="faEye"></fa-icon> Show card number
               </button>
-              <li class="orbit-slide is-active" *ngFor="let card of cardarray; index as i">
-                <button class="button show-number">
-                  <fa-icon [icon]="faEye"></fa-icon> Show card number
-                </button>
-                <div class="user-card">
-                  <img
-                    src="../../assets/aspire_big_logo_white.png"
-                    alt="Card Logo"
-                    class="card-logo text-right"
-                  />
-                  <div class="card-holder">{{ card.cardholder }}</div>
-                  <div class="card-number-mask"></div>
-                  <div class="card-number">{{ card.cardnumber | slice : 15 : 19 }}</div>
-                  <div class="card-expiration-cvv">
-                    <div class="card-expiration">
-                      Thru: <span class="exp-date">{{ card.expdate }}</span>
-                    </div>
-                    <div class="card-cvv">
-                      CVV: <fa-icon [icon]="faAsterisk"></fa-icon>&nbsp;<fa-icon
-                        [icon]="faAsterisk"
-                      ></fa-icon
-                      >&nbsp;<fa-icon [icon]="faAsterisk"></fa-icon>
-                    </div>
-                  </div>
-                  <img
-                    src="../../assets/visa_logo.png"
-                    alt="Brand Logo"
-                    class="brand-logo"
-                  />
+              <div class="user-card" [class.card-freeze]="card.frozen">
+                <img
+                  src="../../assets/aspire_big_logo_white.png"
+                  alt="Card Logo"
+                  class="card-logo text-right"
+                />
+                <div class="card-holder">{{ card.cardholder }}</div>
+                <div class="card-number-mask"></div>
+                <div class="card-number">
+                  {{ card.cardnumber | slice : 15 }}
                 </div>
-              </li>
-            </ul>
-
-            <nav class="orbit-bullets">
-              <button [attr.data-slide]="i" *ngFor="let card of cardarray; index as i">
-                <span class="show-for-sr">Slide details.</span>
-              </button>
-            </nav>
-          </div>
+                <div class="card-expiration-cvv">
+                  <div class="card-expiration">
+                    Thru: <span class="exp-date">{{ card.expdate }}</span>
+                  </div>
+                  <div class="card-cvv">
+                    CVV: <fa-icon [icon]="faAsterisk"></fa-icon>&nbsp;<fa-icon
+                      [icon]="faAsterisk"
+                    ></fa-icon
+                    >&nbsp;<fa-icon [icon]="faAsterisk"></fa-icon>
+                  </div>
+                </div>
+                <img
+                  src="../../assets/visa_logo.png"
+                  alt="Brand Logo"
+                  class="brand-logo"
+                />
+              </div>
+              <div class="next-card-shadow"></div>
+            </swiper-slide>
+          </swiper-container>
         </div>
 
         <div class="tabs-panel" id="panel2">
-          <p>All company cards</p>
+          <p>All company cards will be displayed here</p>
         </div>
       </div>
     </div>
@@ -95,7 +88,7 @@
   <div class="bottom-sheet-content">
     <div class="card-actions">
       <ul class="flex-container">
-        <li id="freeze">
+        <li id="freeze" (click)="freezeCard()">
           <span class="ng-fa-icon"
             ><img src="./../../assets/freeze.png"
           /></span>
@@ -117,7 +110,7 @@
           /></span>
           <span class="action-title">Replace card</span>
         </li>
-        <li id="cancel">
+        <li id="cancel" (click)="openconfirmmodal()">
           <span class="ng-fa-icon"
             ><img src="./../../assets/delete.png"
           /></span>
@@ -137,7 +130,7 @@
           ><img src="./../../assets/carddetails.png" /> Card details</a
         >
         <div class="accordion-content" data-tab-content>
-          <p>Panel 1. Card details here</p>
+          <p>Card details here</p>
         </div>
       </li>
       <li class="accordion-item is-active" data-accordion-item>
@@ -151,8 +144,12 @@
               <div class="transaction-info">
                 <p class="purpose">Hamleys</p>
                 <span class="date">20 May 2020</span>
-                <div class="type"><span class="credit-icon"><fa-icon [icon]="faCreditCard"></fa-icon></span>
-                   Refund on debit card</div>
+                <div class="type">
+                  <span class="credit-icon"
+                    ><fa-icon [icon]="faCreditCard"></fa-icon
+                  ></span>
+                  Refund on debit card
+                </div>
               </div>
               <div class="amount credit">+ S$ 150</div>
             </li>
@@ -161,8 +158,12 @@
               <div class="transaction-info">
                 <p class="purpose">Hamleys</p>
                 <span class="date">20 May 2020</span>
-                <div class="type"><span class="credit-icon"><fa-icon [icon]="faCreditCard"></fa-icon></span>
-                   Charged to debit card</div>
+                <div class="type">
+                  <span class="credit-icon"
+                    ><fa-icon [icon]="faCreditCard"></fa-icon
+                  ></span>
+                  Charged to debit card
+                </div>
               </div>
               <div class="amount debit">- S$ 150</div>
             </li>
@@ -171,8 +172,12 @@
               <div class="transaction-info">
                 <p class="purpose">Hamleys</p>
                 <span class="date">20 May 2020</span>
-                <div class="type"><span class="credit-icon"><fa-icon [icon]="faCreditCard"></fa-icon></span>
-                   Charged to debit card</div>
+                <div class="type">
+                  <span class="credit-icon"
+                    ><fa-icon [icon]="faCreditCard"></fa-icon
+                  ></span>
+                  Charged to debit card
+                </div>
               </div>
               <div class="amount debit">- S$ 150</div>
             </li>
@@ -181,28 +186,77 @@
               <div class="transaction-info">
                 <p class="purpose">Hamleys</p>
                 <span class="date">20 May 2020</span>
-                <div class="type"><span class="credit-icon"><fa-icon [icon]="faCreditCard"></fa-icon></span>
-                   Charged to debit card</div>
+                <div class="type">
+                  <span class="credit-icon"
+                    ><fa-icon [icon]="faCreditCard"></fa-icon
+                  ></span>
+                  Charged to debit card
+                </div>
               </div>
               <div class="amount debit">- S$ 150</div>
             </li>
           </ul>
         </div>
-        <button class="button view-transactions">View all card transactions</button>
+        <button class="button view-transactions">
+          View all card transactions
+        </button>
       </li>
     </ul>
   </div>
 </div>
 
-<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+<div
+  id="addCardModal"
+  class="reveal-modal"
+  data-reveal
+  aria-labelledby="modalTitle"
+  aria-hidden="true"
+  role="dialog"
+>
   <h2 id="modalTitle">Add new card</h2>
   <form #addcardform="ngForm">
-    <label>Card Holder Name <span style="color:red">*</span>
-      <input type="text" name="name" [(ngModel)]="cardholdername" required #name="ngModel" />
+    <label
+      >Card Holder Name <span style="color: red">*</span>
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="cardholdername"
+        required
+        #name="ngModel"
+      />
     </label>
-    <small *ngIf="name.invalid && (name.dirty || name.touched)" class="error">This field is required.</small>
-    <button class="button primary" type="submit" [disabled]="addcardform.invalid" (click)="addcard()">Submit</button>
-  </form> 
+    <small *ngIf="name.invalid && (name.dirty || name.touched)" class="error"
+      >This field is required.</small
+    >
+    <button
+      class="button primary"
+      type="submit"
+      [disabled]="addcardform.invalid"
+      (click)="addcard()"
+    >
+      Submit
+    </button>
+  </form>
   <a class="close-reveal-modal" aria-label="Close" data-close>&#215;</a>
 </div>
 
+<div
+  id="confirmModal"
+  class="reveal-modal"
+  data-reveal
+  aria-labelledby="modalTitle"
+  aria-hidden="true"
+  role="dialog"
+>
+  <h2 id="modalTitle">Cancel card</h2>
+  <form #addcardform="ngForm">
+    <label>Are you sure you want to cancel card? </label>
+    <div class="footer">
+      <button class="button primary" type="button" (click)="deletecard()">
+        Yes
+      </button>
+      <button class="button clear" type="button" data-close>No</button>
+    </div>
+  </form>
+  <a class="close-reveal-modal" aria-label="Close" data-close>&#215;</a>
+</div>
