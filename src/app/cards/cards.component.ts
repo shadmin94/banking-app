@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import {
   faCirclePlus,
@@ -21,16 +21,19 @@ export class CardsComponent {
   faCreditCard = faCreditCard;
   faArrowRotateLeft = faArrowRotateLeft;
   cardarray: any;
-  cardholdername: string;
   swiper: any;
+  addcardForm : FormGroup;
 
-  @ViewChild('addcardform') addcardForm: NgForm;
+  //@ViewChild('addcardform') addcardForm: NgForm;
 
   constructor(private el: ElementRef, public toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.getCards();
     console.log(this.cardarray);
+    this.addcardForm = new FormGroup({
+      'cardholdername': new FormControl("", Validators.required)
+    });
     $('#addCardModal').on('closed.zf.reveal', () => {
       this.addcardForm.reset();
     });
@@ -56,7 +59,7 @@ export class CardsComponent {
       '/' +
       (new Date().getFullYear() + 10).toString().substring(2);
     const tempcard = {
-      cardholder: this.cardholdername,
+      cardholder: this.addcardForm.get('cardholdername')?.value,
       cardnumber:
         Math.floor(Math.random() * (9999 - 1000 + 1) + 1000) +
         ' ' +
@@ -118,5 +121,10 @@ export class CardsComponent {
     this.cardarray[this.swiper.activeIndex].frozen
       ? $('.bottom-sheet #freeze .action-title').html('Unfreeze card')
       : $('.bottom-sheet #freeze .action-title').html('Freeze card');
+  }
+
+  ngOnDestroy(): void {
+    this.addcardForm.reset();
+    console.log("destroy fired");
   }
 }

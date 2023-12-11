@@ -9,7 +9,7 @@ import { CardsComponent } from './cards/cards.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { CreditComponent } from './credit/credit.component';
 import { ProfileComponent } from './profile/profile.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ToastrModule} from 'ngx-toastr'
 import { register } from 'swiper/element/bundle';
 register();
@@ -29,6 +29,7 @@ register();
     BrowserAnimationsModule,
     FontAwesomeModule,
     FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
   providers: [],

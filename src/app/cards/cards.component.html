@@ -214,24 +214,23 @@
   role="dialog"
 >
   <h2 id="modalTitle">Add new card</h2>
-  <form #addcardform="ngForm">
+  <form [formGroup]="addcardForm">
     <label
       >Card Holder Name <span style="color: red">*</span>
       <input
         type="text"
         name="name"
-        [(ngModel)]="cardholdername"
+        formControlName="cardholdername"
         required
-        #name="ngModel"
       />
     </label>
-    <small *ngIf="name.invalid && (name.dirty || name.touched)" class="error"
+    <small *ngIf="addcardForm.get('cardholdername')?.invalid && addcardForm.get('cardholdername')?.touched" class="error"
       >This field is required.</small
     >
     <button
       class="button primary"
       type="submit"
-      [disabled]="addcardform.invalid"
+      [disabled]="addcardForm.invalid"
       (click)="addcard()"
     >
       Submit
